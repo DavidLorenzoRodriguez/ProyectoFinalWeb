@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Intranet MRF - Compras</title>
+  <title>Perfil</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -29,61 +29,78 @@
 
 <body>
 
-  <!-- ======= Navbar ======= -->
-  <div class="collapse navbar-collapse custom-navmenu" id="main-navbar">
-    <div class="container py-2 py-md-5">
-      <div class="row align-items-start">
-        <div class="col-md-2">
-          <ul class="custom-menu">
-            <li><a href="index.html">INICIO_INTRANET</a></li>
-            <li><a href="produccion.html">PRODUCCIÓN</a></li>
-            <li class="active"><a href="compras.html">COMPRAS</a></li>
-            <li><a href="planta.html">PLANTA</a></li>
-            <li><a href="expediciones.html">EXPEDICIONES</a></li>
-            <li><a href="ventas.html">VENTAS</a></li>
-            <li><a href="rrhh.html">RRHH</a></li>
-            <li><a href="rrhh.html">RRHH</a></li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ======= Logo MRF ======= -->
-  <nav class="navbar navbar-light custom-navbar">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <img src="assets/img/MRF_negativo_azul.png" alt="Logo MRF Solutions" class="img-fluid" style="width: 300px; height: auto;">
-      </a>
-      <a href="#" class="burger" data-bs-toggle="collapse" data-bs-target="#main-navbar">
-        <span></span>
-      </a>
-    </div>
-  </nav>
+  <header>
+    <!-- ======= Navbar ======= -->
+   <div class="collapse navbar-collapse custom-navmenu" id="main-navbar">
+     <div class="container py-2 py-md-5">
+       <div class="row align-items-start">
+         <div class="col-md-2">
+           <ul class="custom-menu">
+             <li class="active"><a href="index.html">INICIO</a></li>
+             <li><a href="perfil.html">PERFIL</a></li>
+             <li><a href="rrhh.html">RRHH</a></li>
+           </ul>
+         </div>
+       </div>
+ 
+     </div>
+   </div>
+   <!-- ======= Logo BUSCO ======= -->
+   <nav class="navbar navbar-light custom-navbar">
+     <div class="container">
+       <a class="navbar-brand" href="index.html">
+         <img src="assets/img/logo-busco.png" alt="logo-busco" class="img-fluid" style="width: 300px; height: auto;">
+       </a>
+       <a href="#" class="burger" data-bs-toggle="collapse" data-bs-target="#main-navbar">
+         <span></span>
+       </a>
+     </div>
+   </nav>
+   </header>
 
   <main id="main">
 
-     <!-- ======= Works Section ======= -->
-     <section class="section site-portfolio">
+    <!-- ======= Works Section ======= -->
+    <section class="section site-portfolio">
       <div class="container">
         <div class="row mb-5 align-items-center">
           <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
-            <h2>Aplicaciones para COMPRAS</h2>
-            <p class="mb-0">Aplicaciones y enlaces relacionados con el dep. Compras</p>
+            <h2>Aplicaciones para PRODUCCION</h2>
+            <p class="mb-0">Aplicaciones y enlaces de Interes para las secciones de fabrica de MRF</p>
           </div>
           <div class="col-md-12 col-lg-6 text-start text-lg-end" data-aos="fade-up" data-aos-delay="100">
             <div id="filters" class="filters">
               <a href="#" data-filter="*" class="active">All</a>
+              <a href="#" data-filter=".inventario">Inventario</a>
+              <a href="#" data-filter=".backoffice">Backoffice</a>
               <a href="#" data-filter=".solicitud">Solicitud</a>
               <a href="#" data-filter=".epis">Epis</a>
-              <a href="#" data-filter=".consumibles">Consumibles_Oficina</a>
+              <a href="#" data-filter=".corte-laser">Corte_Laser</a>
+              <a href="#" data-filter=".prensas">Prensas</a>
               <a href="#" data-filter=".mantenimiento">Mantenimiento</a>
               <a href="#" data-filter=".suppliersapp">Subcontratación</a>
             </div>
           </div>
         </div>
         <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
+          <div class="item inventario col-sm-6 col-md-4 col-lg-4 mb-4">
+            <a href="work-single.html" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>INVENTARIO</h3>
+                <span>general</span>
+              </div>
+              <img class="img-fluid" src="assets/img/inventario.jpg">
+            </a>
+          </div>
+          <div class="item backoffice col-sm-6 col-md-4 col-lg-4 mb-4">
+            <a href="work-single.html" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>Backoffice</h3>
+                <span>gestión de Usuarios</span>
+              </div>
+              <img class="img-fluid" src="assets/img/backoffice.jpg">
+            </a>
+          </div>
           <div class="item solicitud col-sm-6 col-md-4 col-lg-4 mb-4">
             <a href="work-single.html" class="item-wrap fancybox">
               <div class="work-info">
@@ -102,13 +119,22 @@
               <img class="img-fluid" src="assets/img/epis.jpg">
             </a>
           </div>
-          <div class="item consumibles col-sm-6 col-md-4 col-lg-4 mb-4">
+          <div class="item corte-laser col-sm-6 col-md-4 col-lg-4 mb-4">
             <a href="work-single.html" class="item-wrap fancybox">
               <div class="work-info">
-                <h3>Consumibles_Oficina</h3>
-                <span>Solicitud Consumibles</span>
+                <h3>Corte_Laser</h3>
+                <span>AOM</span>
               </div>
-              <img class="img-fluid" src="assets/img/consumibles-oficina.jpg">
+              <img class="img-fluid" src="assets/img/corte-laser.jpg">
+            </a>
+          </div>
+          <div class="item prensas col-sm-6 col-md-4 col-lg-4 mb-4">
+            <a href="work-single.html" class="item-wrap fancybox">
+              <div class="work-info">
+                <h3>Prensas</h3>
+                <span>PowerBI de Prensas</span>
+              </div>
+              <img class="img-fluid" src="assets/img/prensa.jpg">
             </a>
           </div>
           <div class="item mantenimiento col-sm-6 col-md-4 col-lg-4 mb-4">
@@ -138,10 +164,10 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
-          <p class="mb-1">&copy; Copyright 2023 MRFSolutions </p>
+          <p class="mb-1">&copy; Copyright 2023 Jose Luís Blazquez & David Lorenzo </p>
           <div class="credits">
 
-            Designed by David Lorenzo Rodríguez</a>
+            Designed by Jose Luís Blazquez & David Lorenzo</a>
           </div>
         </div>
         <div class="col-sm-6 social text-md-end">
