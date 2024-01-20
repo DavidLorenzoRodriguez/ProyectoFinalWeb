@@ -25,6 +25,52 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+  <!-- Archivos JS de proveedores -->
+  <script src="assets/js/jquery.js" type="text/javascript"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+  <?php if(@$_GET['w'])
+{echo'<script>alert("'.@$_GET['w'].'");</script>';}
+?>
+<script>
+function validateForm() {
+  var y = document.forms["form"]["name"].value;	var letters = /^[A-Za-z]+$/;if (y == null || y == "") {
+    alert("El campo de nombre debe ser introducido");
+    return false;
+  }
+  var z =document.forms["form"]["college"].value;if (z == null || z == "") {
+      alert("Debe indicar la institución educativa");
+      return false;
+    }
+    var x = document.forms["form"]["email"].value;var atpos = x.indexOf("@");
+var dotpos = x.lastIndexOf(".");
+if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+  alert("Dirección de correo inválido");
+  return false;
+}
+var a = document.forms["form"]["password"].value;
+if(a == null || a == "")
+{
+  alert("Debe introducir una contraseña");
+  return false;
+}
+if(a.length<5 || a.length>25)
+{
+  alert("La contraseña debe tener una extensión entre 5 y 25 caracteres");
+  return false;
+}
+var b = document.forms["form"]["cpassword"].value;
+if (a!=b){alert("Las contraseñas no coinciden");
+return false;
+}
+}
+</script>
+
 </head>
 
 <body>
@@ -35,7 +81,7 @@
       <div class="row align-items-start">
         <div class="col-md-2">
           <ul class="custom-menu">
-            <li class="active"><a href="index.html">INICIO</a></li>
+            <li class="active"><a href="index.php">INICIO</a></li>
             <li><a href="perfil.html">PERFIL</a></li>
             <li><a href="rrhh.html">RRHH</a></li>
           </ul>
@@ -47,12 +93,55 @@
   <!-- ======= Logo BUSCO ======= -->
   <nav class="navbar navbar-light custom-navbar">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="index.php">
         <img src="assets/img/logo-busco.png" alt="logo-busco" class="img-fluid" style="width: 300px; height: auto;">
       </a>
       <a href="#" class="burger" data-bs-toggle="collapse" data-bs-target="#main-navbar">
         <span></span>
       </a>
+    </div>
+    <div class="col-md-2 col-md-offset-4">
+      <a href="#" id="ingresarBtn" class="pull-right btn sub1" data-toggle="modal" data-target="#myModal">
+        <span class="glyphicon glyphicon-log-in" aria-hidden="true">
+        </span>&nbsp;<span class="title1"><b>Ingresar</b></span>
+      </a>
+    </div>
+    
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content title1">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title title1"><span style="color:orange">Ingresar</span></h4>
+          </div>
+          <div class="modal-body">
+          <form class="form-horizontal" action="login.php?q=index.php" method="POST">
+          <fieldset>
+              <!-- entrada de texto-->
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="email"></label>  
+                <div class="col-md-6">
+                  <input id="email" name="email" placeholder="Ingresa tu correo electrónico" class="form-control input-md" type="email">
+                </div>
+              </div>
+
+              <!-- entrada contraseña-->
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="password"></label>
+                <div class="col-md-6">
+                <input id="password" name="password" placeholder="Ingresa tu contraseña" class="form-control input-md" type="password">    
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+              </div>
+          </fieldset>
+          </form>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
   </header>
@@ -150,17 +239,53 @@
           <a href="#"><span class="bi bi-linkedin"></span></a>
         </div>
       </div>
+      <div class="row footer justify-content-center">
+      </div>
+      <div class="row footer justify-content-center">
+        <div class="col-md-6 box text-center">
+          <a href="#" data-toggle="modal" data-target="#login">Acceso Administrador</a>
+        </div>
+        <div class="col-md-6 box text-center">
+          <a href="feedback.php">Observaciones</a>
+        </div>
+      </div>
     </div>
   </footer>
 
+<!--login admin-->
+  <div class="modal fade" id="login">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title"><span style="color:orange;font-family:'typo' ">Ingresar</span></h4>
+        </div>
+        <div class="modal-body title1">
+          <div class="row">
+            <div class="col-md-3"></div>
+          <div class="col-md-6">
+          <form role="form" method="post" action="admin.php?q=index.php">
+        <div class="form-group">
+          <input type="text" name="uname" maxlength="21"  placeholder="Usuario Admin" class="form-control"/> 
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" maxlength="15" placeholder="Contraseña Admin" class="form-control"/>
+        </div>
+        <div class="form-group" align="center">
+          <input type="submit" name="login" value="Ingresar" class="btn btn-primary" />
+        </div>
+          </form>
+          </div><div class="col-md-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
- 
+
+
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
