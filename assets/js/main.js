@@ -103,4 +103,20 @@
     })
   });
 
-})()
+  jQuery(document).ready(function($){
+    //open-close submenu on mobile
+    $('.cd-main-nav').on('click', function(event){
+      if($(event.target).is('.cd-main-nav')) $(this).children('ul').toggleClass('is-visible');
+    });
+  });
+
+   //Función para abrir el modal al hacer clic en el botón de ingresar   
+   const openModal = () => {
+    $('#login').modal('show');
+  }
+
+  // Evento para abrir el modal al hacer clic en el botón de ingresar
+  on('click', '#ingresarBtn', openModal);
+
+
+})();
