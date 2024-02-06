@@ -53,13 +53,18 @@ include_once 'dbConnection.php';
   
     <div class="col-md-4 col-md-offset-2">
       <?php
+        include_once 'dbConnection.php';
         session_start();
           if(!(isset($_SESSION['email']))){
-        header("location:index.php");}
+        header("location:index.php");
+
+        }
         else
         {
         $name = $_SESSION['name'];
         $email=$_SESSION['email'];
+
+        include_once 'dbConnection.php';
         echo '<div class="pull-right top title1">';
         echo '<span class="log1">';
         echo '<span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Hola,';
@@ -77,7 +82,9 @@ include_once 'dbConnection.php';
 
 <?php include 'index.php'; ?>
 
+<!--Footer -->
 
+<!--login admin-->
 
 </body>
 </html>

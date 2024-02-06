@@ -43,6 +43,10 @@ function validateForm() {
     alert("El campo de nombre debe ser introducido");
     return false;
   }
+  var z =document.forms["form"]["college"].value;if (z == null || z == "") {
+      alert("Debe indicar la institución educativa");
+      return false;
+    }
     var x = document.forms["form"]["email"].value;var atpos = x.indexOf("@");
 var dotpos = x.lastIndexOf(".");
 if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
@@ -70,39 +74,39 @@ return false;
 </head>
 
 <body>
-  <header>  
+  <header>
   <!-- ======= Navbar ======= -->
-      <?php
-    
-    session_start();
-    $name = isset($_SESSION['name']) ? $_SESSION['name'] : ''; 
-    
+  <div class="collapse navbar-collapse custom-navmenu" id="main-navbar">
+    <div class="container py-2 py-md-5">
+      <div class="row align-items-start">
+        <div class="col-md-2">
+          <ul class="custom-menu">
+            <li class="active"><a href="index.php">INICIO</a></li>
+            <li><a href="perfil.html">PERFIL</a></li>
+            <li><a href="rrhh.html">RRHH</a></li>
+          </ul>
+        </div>
+      </div>
 
-        ?>
-        <!-- Mostrar mensaje de inicio de sesión -->
-        <?php if (!(isset($_SESSION['email']))): ?>
-            <p>No hay sesión activa. <a href="index.php">Volver a inicio</a></p>
-        <?php else: ?>
-            <p>Bienvenido, <?php echo $name; ?> | <a href="logout.php?q=perfil.php"><button class="btn btn-danger">Cerrar Sesión</button></a></p>
-        <?php endif; 
-
-        include 'barraLogo.php';
-      ?>
-      
+    </div>
+  </div>
   <!-- ======= Logo BUSCO ======= -->
   <nav class="navbar navbar-light custom-navbar">
-    <div class="container col-md-8 col-md-offset-8"> 
+    <div class="container">
+      <a class="navbar-brand" href="index.php">
+        <img src="assets/img/logo-busco.png" alt="logo-busco" class="img-fluid" style="width: 300px; height: auto;">
+      </a>
+      <a href="#" class="burger" data-bs-toggle="collapse" data-bs-target="#main-navbar">
+        <span></span>
+      </a>
     </div>
     <div class="col-md-2 col-md-offset-4">
-    <a href="#" id="ingresarBtn" class="pull-right btn btn-primary sub1" data-toggle="modal" data-target="#myModal" style="border: 2px solid #0d1e2d; background-color: #041b3c;" onmouseover="this.style.border='2px solid #b5765b'; this.style.backgroundColor='#b5765b';" onmouseout="this.style.border='2px solid #0d1e2d'; this.style.backgroundColor='#041b3c';">
-      <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Ingresar</b></span>
-    </a>
-    <a href="#" id="registrarBtn" class="pull-right btn btn-primary sub1" data-toggle="modal" data-target="#registroModal" style="border: 2px solid #0d1e2d; background-color: #041b3c;" onmouseover="this.style.border='2px solid #b5765b'; this.style.backgroundColor='#b5765b';" onmouseout="this.style.border='2px solid #0d1e2d'; this.style.backgroundColor='#041b3c';">
-      <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Registrarse</b></span>
-    </a>
+      <a href="#" id="ingresarBtn" class="pull-right btn sub1" data-toggle="modal" data-target="#myModal">
+        <span class="glyphicon glyphicon-log-in" aria-hidden="true">
+        </span>&nbsp;<span class="title1"><b>Ingresar</b></span>
+      </a>
     </div>
     
-    <!-- MOdal para login-->
     <div class="modal fade" id="myModal">
       <div class="modal-dialog">
         <div class="modal-content title1">
@@ -139,100 +143,6 @@ return false;
         </div>
       </div>
     </div>
-
-<!-- MOdal para registro-->
-<div class="modal fade" id="registroModal">
-      <div class="modal-dialog">
-        <div class="modal-content title1">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title title1"><span style="color:orange">Ingresar</span></h4>
-          </div>
-          <div class="modal-body">
-  <!-- inicio formulario registro-->  
-  <form class="form-horizontal" name="form" action="sign.php?q=account.php" onSubmit="return validateForm()" method="POST">
-    
-  <fieldset>
-
-    <!-- entrada texto-->
-    <div class="form-group">
-      <label class="col-md-12 control-label" for="name"></label>
-      <div class="col-md-12">
-      <input id="name" name="name" placeholder="Ingresa tu nombre" class="form-control input-md" type="text">
-
-      </div>
-    </div>
-
-    <!-- entrada texto-->
-    <div class="form-group">
-      <label class="col-md-12 control-label" for="gender"></label>
-      <div class="col-md-12">
-        <select id="gender" name="gender" placeholder="Ingresa tu género" class="form-control input-md" >
-      <option value="Male">Género</option>
-      <option value="M">Hombre</option>
-      <option value="F">Mujer</option> </select>
-      </div>
-    </div>
-   <!-- entrada texto-->
-   <div class="form-group">
-      <label class="col-md-12 control-label" for="admin"></label>
-      <div class="col-md-12">
-        <select id="admin" name="admin" placeholder="Eres empleador o buscas trabajo" class="form-control input-md" >
-      <option value="User">Eres empleador o buscas trabajo</option>
-      <option value="U">Usuario</option>
-      <option value="E">Empleador</option> </select>
-      </div>
-    </div>
-    <!-- entrada texto-->
-    <div class="form-group">
-      <label class="col-md-12 control-label title1" for="email"></label>
-      <div class="col-md-12">
-        <input id="email" name="email" placeholder="Ingresa tu correo electrónico" class="form-control input-md" type="email">
-        
-      </div>
-    </div>
-
-    <!-- entrada texto-->
-    <div class="form-group">
-      <label class="col-md-12 control-label" for="mob"></label> 
-      <div class="col-md-12">
-      <input id="mob" name="mob" placeholder="Ingresa tu número teléfono" class="form-control input-md" type="number">
-        
-      </div>
-    </div>
-
-    <!-- entrada texto-->
-    <div class="form-group">
-      <label class="col-md-12 control-label" for="password"></label>
-      <div class="col-md-12">
-        <input id="password" name="password" placeholder="Ingresa tu contraseña" class="form-control input-md" type="password">    
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-md-12control-label" for="cpassword"></label>
-      <div class="col-md-12">
-        <input id="cpassword" name="cpassword" placeholder="Confirma tu contraseña" class="form-control input-md" type="password">
-      </div>
-    </div>
-
-    <?php if(@$_GET['q7'])
-    { echo'<p style="color:red;font-size:15px;">'.@$_GET['q7'];}?>
-    <!-- Button -->
-    <div class="form-group">
-      <label class="col-md-12 control-label" for=""></label>
-      <div class="col-md-12"> 
-        <input  type="submit" class="sub" value="Registrarse" class="btn btn-primary"/>
-      </div>
-    </div>
-  </fieldset>
-  </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
   </nav>
   </header>
 
@@ -260,7 +170,7 @@ return false;
         </div>
         <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
           <div class="item Java col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="java.php" class="item-wrap fancybox">
+            <a href="java.html" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Java</h3>
               </div>
@@ -268,7 +178,7 @@ return false;
             </a>
           </div>
           <div class="item Android col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="android.php" class="item-wrap fancybox">
+            <a href="android.html" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Android</h3>
               </div>
@@ -276,7 +186,7 @@ return false;
             </a>
           </div>
           <div class="item Oracle Java Python col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="oracle.php" class="item-wrap fancybox">
+            <a href="oracle.html" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Oracle</h3>
               </div>
@@ -284,7 +194,7 @@ return false;
             </a>
           </div>
           <div class="item SQL Java Python Azure col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="sql.php" class="item-wrap fancybox">
+            <a href="sql.html" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>SQL</h3>
               </div>
@@ -292,7 +202,7 @@ return false;
             </a>
           </div>
           <div class="item Azure col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="azure.php" class="item-wrap fancybox">
+            <a href="azure.html" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Azure</h3>
               </div>
@@ -300,7 +210,7 @@ return false;
             </a>
           </div>
           <div class="item Python col-sm-6 col-md-4 col-lg-4 mb-4">
-            <a href="python.php" class="item-wrap fancybox">
+            <a href="python.html" class="item-wrap fancybox">
               <div class="work-info">
                 <h3>Python</h3>
               </div>
@@ -312,11 +222,69 @@ return false;
     </section><!-- End  Works Section -->
 
   <!-- ======= Footer ======= -->
-  <footer>
-    <?php
-      include 'footer.php';
-      ?>
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="mb-1">&copy; Copyright 2023 Jose Luís Blazquez & David Lorenzo </p>
+          <div class="credits">
+
+            Designed by Jose Luís Blazquez & David Lorenzo</a>
+          </div>
+        </div>
+        <div class="col-sm-6 social text-md-end">
+          <a href="#"><span class="bi bi-twitter"></span></a>
+          <a href="#"><span class="bi bi-facebook"></span></a>
+          <a href="#"><span class="bi bi-instagram"></span></a>
+          <a href="#"><span class="bi bi-linkedin"></span></a>
+        </div>
+      </div>
+      <div class="row footer justify-content-center">
+      </div>
+      <div class="row footer justify-content-center">
+        <div class="col-md-6 box text-center">
+          <a href="#" data-toggle="modal" data-target="#login">Acceso Administrador</a>
+        </div>
+        <div class="col-md-6 box text-center">
+          <a href="feedback.php">Observaciones</a>
+        </div>
+      </div>
+    </div>
   </footer>
+
+<!--login admin-->
+  <div class="modal fade" id="login">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title"><span style="color:orange;font-family:'typo' ">Ingresar</span></h4>
+        </div>
+        <div class="modal-body title1">
+          <div class="row">
+            <div class="col-md-3"></div>
+          <div class="col-md-6">
+          <form role="form" method="post" action="admin.php?q=index.php">
+        <div class="form-group">
+          <input type="text" name="uname" maxlength="21"  placeholder="Usuario Admin" class="form-control"/> 
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" maxlength="15" placeholder="Contraseña Admin" class="form-control"/>
+        </div>
+        <div class="form-group" align="center">
+          <input type="submit" name="login" value="Ingresar" class="btn btn-primary" />
+        </div>
+          </form>
+          </div><div class="col-md-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
 
 
   <!-- Template Main JS File -->

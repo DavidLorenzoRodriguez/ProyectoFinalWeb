@@ -13,18 +13,15 @@ $email = addslashes($email);//añade barras
 $password = stripslashes($password); 
 $password = addslashes($password);
 $password=md5($password); //funcion md5 para encriptar la contraseña
-$result = mysqli_query($con,"SELECT name, admin FROM user WHERE email = '$email' and password = '$password'") or die('Error');
+$result = mysqli_query($con,"SELECT name FROM user WHERE email = '$email' and password = '$password'") or die('Error');
 $count=mysqli_num_rows($result);
 if($count==1){
 while($row = mysqli_fetch_array($result)) {
 	$name = $row['name'];
-	$admin = $row['admin'];
 }
 $_SESSION["name"] = $name;
 $_SESSION["email"] = $email;
-$_SESSION["admin"] = $admin;
-
-header("location:index.php?q=1");
+header("location:account.php?q=1");
 }
 else
 header("location:$ref?w=Usuario o contraseña incorrectos");
